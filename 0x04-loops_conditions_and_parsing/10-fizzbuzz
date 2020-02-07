@@ -1,0 +1,17 @@
+#!/usr/bin/env bash
+# Bash script that displays numbers from 1 to 100
+for c in $(seq 1 100);
+do
+	if [ $((c % 15)) -eq 0 ];
+	then
+		echo "FizzBuzz"
+	elif [ $((c % 3)) -eq 0 ];
+	then
+		echo "Fizz"
+	elif [ $((c % 5)) -eq 0 ];
+	then
+		echo "Buzz"
+	else
+		echo "$c"
+	fi
+done
