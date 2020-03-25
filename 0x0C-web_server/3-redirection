@@ -1,9 +1,8 @@
 #!/usr/bin/env bash
 # NGINX
-apt-get update -y
+apt-get update
 apt-get install nginx -y
-echo "Holberton School" > /var/www/html/index.nginx-debian.html
-new_string="server_name _;\n\trewrite ^\/redirect_me/ https://www.youtube.com/watch?v=ITbv2wm_14I permanent"
-sed -i "s/server_name _;/$new_string/" /etc/nginx/sites-available/default
-systemctl restart nginx.service
+new_string="server_name _;\n\trewrite ^\/redirect_me\/ https:\/\/www.youtube.com\/watch?v=ITbv2wm_14I permanent"
+cd /etc/nginx/sites-available
+sed -i "s/server_name _;/$new_string/" default
 service nginx start
