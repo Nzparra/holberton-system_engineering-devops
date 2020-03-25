@@ -1,7 +1,9 @@
 #!/usr/bin/env bash
 # NGINX
 apt-get update
-apt-get install nginx -y
-sed -i "s/server_name _;/server_name _; \n\trewrite ^\/redirect_me  https:\/\/www.youtube.com\/watch?v=ITbv2wm_14I permanent;/" /etc/nginx/sites-available/default
-systemctl restart nginx.service
-service nginx start
+apt-get -y install nginx
+echo "Holberton School" | tee /usr/share/nginx/html/index.html
+URL=/etc/nginx/sites-available/default
+RED="location /redirect_me {\n return 301 https://www.youtube.com/watch?v=ITbv2wm_14I;\n}\n"
+sed -i "37i $RED" $URL
+service nginx restart
