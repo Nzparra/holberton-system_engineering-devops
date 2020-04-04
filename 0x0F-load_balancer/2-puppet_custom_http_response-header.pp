@@ -14,7 +14,7 @@ exec { 'e1':
 
 exec { 'e2':
   require  => Exec['e1'],
-  command  => 'sudo sed -i "s/server_name _;/server_name _;\n\tadd_header X-Served-By \$hostname;/" /etc/nginx/sites-enabled/default',
+  command  => 'sudo sed -i "s/http {/http {\n\tadd_header X-Served-By \$hostname;\n/" /etc/nginx/nginx.conf',
   path     => ['/usr/bin', 's/bin', '/bin', '/usr/sbin'],
   provider => 'shell',
   return   => [0,1]}
