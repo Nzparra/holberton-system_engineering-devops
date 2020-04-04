@@ -5,7 +5,7 @@ apt-get install haproxy -y
 CONFIG="\
 frontend main
 	bind *:80
-	mode http
+	mode http-keep-alive
 	default_backend web-server
 backend web-server
 	balance roundrobin
